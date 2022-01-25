@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Router/router_search</title>
+</head>
+<body>
+<h3 style="padding-left: 30px; padding-top: 60px">Search for the router by details :</h3>
+<form method="post" class="search" action="search_router">
+    {% csrf_token %}
+    <input type="text" name="srh" placeholder="Search by 'Sapid' or 'Hostname' or 'Loopback' or 'Mac Address'">
+    <button type="submit">Search</button>
+
+</form>
+<div>
+    <div style="color: black">
+        {% if sr %}
+        {% for k in sr %}
+        <table border="1px" width="1000px" style="padding-left: 10px">
+            <tr>
+                <td width="300"><b>Sapid</b></td>
+                <td>{{k.Sapid}}</td>
+            </tr>
+            <tr>
+                <td><b>Hostname</b></td>
+                <td>{{k.Hostname}}</td>
+            </tr>
+            <tr>
+                <td><b>Loopback</b></td>
+                <td>{{k.Loopback}}</td>
+            </tr>
+            <tr>
+                <td><b>Mac Address</b></td>
+                <td>{{k.Mac_address}}</td>
+            </tr>
+
+        </table>
+        <hr>
+        {% endfor %}
+        {% endif %}
+    </div>
+</div>
+</body>
+</html>

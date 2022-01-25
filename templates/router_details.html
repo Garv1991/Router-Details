@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<table id="details">
+<thead>
+    <tr style="font-family: Calibri; font-size: 18px">
+        <th>SL. No.</th>
+        <th>Sapid</th>
+        <th>Hostname</th>
+        <th>Loopback</th>
+        <th>Mac Address</th>
+    </tr>
+</thead>
+<tbody>
+    {% for value in router_info %}
+    <tr>
+        <td>{{value.id}}</td>
+        <td>{{value.Sapid}}</td>
+        <td>{{value.Hostname}}</td>
+        <td>{{value.Loopback}}</td>
+        <td>{{value.Mac_address}}</td>
+        <td>
+            <a href="{% url 'router_form' value.id %}" >Edit</a>
+            <form action="{% url 'deletedata' value.id %}" method="post"> {% csrf_token %}
+                <input type="submit" value="Delete">
+            </form>
+        </td>
+    </tr>
+    {% endfor %}
+</tbody>
+</table>
+</body>
+</html>
